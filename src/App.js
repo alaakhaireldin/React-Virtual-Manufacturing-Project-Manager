@@ -58,7 +58,7 @@ function App() {
 
       {showEvent && <EventList events={events} handleClick={handleClick} />}
       {showModal && (
-        <Modal handleClose={handleClose} isSalesModal={true}>
+        <Modal handleClose={handleClose} isSalesModal={false}>
           <h2>Terms and Conditions</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error odit
