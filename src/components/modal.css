@@ -12,6 +12,8 @@
     margin: 200px auto;
     background:#fff;
     border-radius: 10px;
+    height: 65%;
+    overflow-y: scroll
     }
 
 .modal h2{
