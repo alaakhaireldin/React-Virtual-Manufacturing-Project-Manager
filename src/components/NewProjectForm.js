@@ -7,6 +7,13 @@ export default function NewProjectForm() {
   const [data, setData] = useState("");
   const [unit, setUnit] = useState("");
 
+  const resetForm = () => {
+    setTitle("");
+    setImage("");
+    setData("");
+    setUnit("");
+  };
+
   const handleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -21,6 +28,7 @@ export default function NewProjectForm() {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
+          value={title}
         ></input>
       </label>
       <label>
@@ -32,6 +40,7 @@ export default function NewProjectForm() {
           onChange={(e) => {
             setImage(e.target.value);
           }}
+          value={image}
         ></input>
       </label>
       <label>
@@ -43,6 +52,7 @@ export default function NewProjectForm() {
           onChange={(e) => {
             setUnit(e.target.value);
           }}
+          value={unit}
         ></input>
       </label>
       <label>
@@ -54,12 +64,14 @@ export default function NewProjectForm() {
           onChange={(e) => {
             setData(e.target.value);
           }}
+          value={data}
         ></input>
       </label>
       <p>
         title - {title}, Image - {image}
       </p>
       <button>Submit</button>
+      <p onClick={resetForm}>Reset Form</p>
     </form>
   );
 }
