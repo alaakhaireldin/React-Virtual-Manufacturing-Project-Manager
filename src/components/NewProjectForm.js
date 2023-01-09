@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import "./NewProjectForm.css";
 
-export default function NewProjectForm() {
+export default function NewProjectForm({ addProject }) {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [data, setData] = useState("");
@@ -16,7 +16,7 @@ export default function NewProjectForm() {
       image: image,
       id: uuidv4(),
     };
-    console.log(project);
+    addProject(project);
     resetForm();
   };
 

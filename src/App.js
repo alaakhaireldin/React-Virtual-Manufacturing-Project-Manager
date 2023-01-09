@@ -8,24 +8,21 @@ import NewProjectForm from "./components/NewProjectForm";
 function App() {
   const [showProject, setShowProject] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [Projects, setProjects] = useState([
-    { title: "First Project", id: 1 },
-    { title: "Second Project", id: 2 },
-    { title: "Third Project", id: 3 },
-  ]);
+  const [Projects, setProjects] = useState([]);
 
-  console.log(showModal);
-  const handleClick = (id) => {
-    setProjects((prevProjects) => {
-      return prevProjects.filter((Project) => {
-        return id !== Project.id;
-      });
+  const addProject = (project) => {
+    setProjects((previousProjects) => {
+      return [...previousProjects, project];
     });
-    console.log(id);
+    setShowModal(false);
   };
 
-  const handleClose = () => {
-    setShowModal(false);
+  const handleClick = (id) => {
+    setProjects((prevProjects) => {
+      return prevProjects.filter((project) => {
+        return id !== project.id;
+      });
+    });
   };
 
   const subtitle = "Some title in my website";
@@ -60,8 +57,8 @@ function App() {
         <ProjectList Projects={Projects} handleClick={handleClick} />
       )}
       {showModal && (
-        <Modal handleClose={handleClose} isSalesModal={false}>
-          <NewProjectForm></NewProjectForm>
+        <Modal isSalesModal={false}>
+          <NewProjectForm addProject={addProject} />
         </Modal>
       )}
       <div>
