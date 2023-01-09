@@ -24,11 +24,13 @@ function App() {
       });
     });
   };
-
-  const subtitle = "Some title in my website";
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const subtitle = "Current Projects: ";
   return (
     <div className="App">
-      <Title title="Alaa's" subtitle={subtitle} />
+      <Title title="Virtual Manufacturing" subtitle={subtitle} />
 
       {showProject && (
         <div>
@@ -57,7 +59,7 @@ function App() {
         <ProjectList Projects={Projects} handleClick={handleClick} />
       )}
       {showModal && (
-        <Modal isSalesModal={false}>
+        <Modal handleClose={handleClose} isSalesModal={false}>
           <NewProjectForm addProject={addProject} />
         </Modal>
       )}
