@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import "./NewProjectForm.css";
 
 export default function NewProjectForm() {
@@ -6,6 +8,17 @@ export default function NewProjectForm() {
   const [image, setImage] = useState("");
   const [data, setData] = useState("");
   const [unit, setUnit] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const project = {
+      title: title,
+      image: image,
+      id: uuidv4(),
+    };
+    console.log(project);
+    resetForm();
+  };
 
   const resetForm = () => {
     setTitle("");
@@ -19,7 +32,7 @@ export default function NewProjectForm() {
   };
 
   return (
-    <form className="new-project-form">
+    <form className="new-project-form" onSubmit={handleSubmit}>
       <label>
         <span> Project Title: </span>
         <input
@@ -67,11 +80,7 @@ export default function NewProjectForm() {
           value={data}
         ></input>
       </label>
-      <p>
-        title - {title}, Image - {image}
-      </p>
       <button>Submit</button>
-      <p onClick={resetForm}>Reset Form</p>
     </form>
   );
 }
