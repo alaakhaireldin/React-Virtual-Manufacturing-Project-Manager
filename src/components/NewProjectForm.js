@@ -17,6 +17,7 @@ export default function NewProjectForm() {
         <span> Project Title: </span>
         <input
           type="text"
+          required
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -26,6 +27,8 @@ export default function NewProjectForm() {
         <span> Project Image: </span>
         <input
           type="file"
+          accept=".jpg, .jpeg, .png"
+          required
           onChange={(e) => {
             setImage(e.target.value);
           }}
@@ -34,7 +37,9 @@ export default function NewProjectForm() {
       <label>
         <span> Project Unit: </span>
         <input
-          type="text"
+          type="number"
+          pattern="[0-9]*"
+          required
           onChange={(e) => {
             setUnit(e.target.value);
           }}
@@ -43,7 +48,9 @@ export default function NewProjectForm() {
       <label>
         <span> Project Data: </span>
         <input
-          type="text"
+          type="file"
+          accept=".csv, .txt"
+          required
           onChange={(e) => {
             setData(e.target.value);
           }}
