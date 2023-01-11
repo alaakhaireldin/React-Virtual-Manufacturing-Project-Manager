@@ -2,71 +2,65 @@ import "./App.css";
 import React, { useState } from "react";
 import Title from "./components/Title";
 import Modal from "./components/Modal";
-import EventList from "./components/EventList";
+import ProjectList from "./components/ProjectList";
+import NewProjectForm from "./components/NewProjectForm";
 
 function App() {
-  const [showEvent, setShowEvent] = useState(true);
+  const [showProject, setShowProject] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [events, setEvents] = useState([
-    { title: "mario's birthday bash", id: 1 },
-    { title: "browser's live stream", id: 2 },
-    { title: "race on moo moo farm", id: 3 },
-  ]);
+  const [Projects, setProjects] = useState([]);
 
-  console.log(showModal);
-  const handleClick = (id) => {
-    setEvents((prevEvents) => {
-      return prevEvents.filter((event) => {
-        return id !== event.id;
-      });
+  const addProject = (project) => {
+    setProjects((previousProjects) => {
+      return [...previousProjects, project];
     });
-    console.log(id);
-  };
-
-  const handleClose = () => {
     setShowModal(false);
   };
 
-  const subtitle = "Some title in my website";
+  const handleClick = (id) => {
+    setProjects((prevProjects) => {
+      return prevProjects.filter((project) => {
+        return id !== project.id;
+      });
+    });
+  };
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const subtitle = "Current Projects: ";
   return (
     <div className="App">
-      <Title title="Alaa's" subtitle={subtitle} />
-      {/* <Title title="Shaimaa's" subtitle="something else" /> */}
+      <Title title="Virtual Manufacturing" subtitle={subtitle} />
 
-      {showEvent && (
+      {showProject && (
         <div>
           <button
             onClick={() => {
-              setShowEvent(false);
+              setShowProject(false);
             }}
           >
-            Hide event
+            Hide List
           </button>
         </div>
       )}
-      {!showEvent && (
+      {!showProject && (
         <div>
           <button
             onClick={() => {
-              setShowEvent(true);
+              setShowProject(true);
             }}
           >
-            Show Event
+            Show Project
           </button>
         </div>
       )}
 
-      {showEvent && <EventList events={events} handleClick={handleClick} />}
+      {showProject && (
+        <ProjectList Projects={Projects} handleClick={handleClick} />
+      )}
       {showModal && (
-        <Modal handleClose={handleClose}>
-          <h2>Terms and Conditions</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error odit
-            nam et reprehenderit quibusdam temporibus officia dolorum quo sint
-            nemo quis, laborum, quasi nisi fugit praesentium debitis
-            repudiandae! Sapiente, omnis.
-          </p>
-          <a href="#">find out more...</a>
+        <Modal handleClose={handleClose} isSalesModal={false}>
+          <NewProjectForm addProject={addProject} />
         </Modal>
       )}
       <div>
@@ -75,7 +69,7 @@ function App() {
             setShowModal(true);
           }}
         >
-          Terms and Conditions
+          Add Project
         </button>
       </div>
     </div>

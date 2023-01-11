@@ -1,3 +1,17 @@
+This is a simple project built with React, it's meant to demonstrate the basic skills of React such as using state and props, creating modals and managing events, it's a simple project management tool that allows you to create and manage your projects and also to practice some basic styling concepts like using CSS modules and dynamic classes
+
+I utilized several key features of React, such as the useState hook for managing component state, and the use of state and props to control rendering and pass data between components.
+
+I also made use of a modal component, which is passed down as a child prop and rendered in response to a user action. Functions are used as props to handle events such as form submissions and cancelation actions.
+
+For styling, I used a combination of global and component-specific stylesheets, as well as inline styles and dynamic inline styles to control the appearance of the different elements of the application. I also used CSS Modules, and conditional CSS classes to add some dynamic styling.
+
+The form for creating new projects includes basic form validation, controls the inputs, and handles the onChange event to get access to written data in the form. Submitting the form outputs the submitted form to the list of projects and closes the modal.
+
+The modal also has a scroll up and down property and added cancel button to the create project modal, So user can easily use it.
+
+Overall, the Virtual Manufacturing Project Manager is a powerful tool for managing projects within a virtual manufacturing company, with an intuitive and easy-to-use interface. It allows users to create and manage projects, view and edit project details, and track progress all in one place.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
